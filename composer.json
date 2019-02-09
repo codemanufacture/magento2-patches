@@ -1,0 +1,27 @@
+{
+    "name": "codemanufacture/magento2-patches",
+    "description": "A collection of Magento 2 core patches",
+    "require": {
+        "vaimo/composer-patches": "^4.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Piotr Kwiecinski",
+            "email": "piotr.kwiecinski@codemanufacture.com"
+        }
+    ],
+    "extra": {
+        "patches": {
+            "magento/module-google-analytics": {
+                "Google Analytics not added to head correctly": {
+                    "source": "patches/Magento_GoogleAnalytics/magento2-issue-16497.patch",
+                    "version": [
+                        "100.2.*",
+                        "100.3.0"
+                    ]
+                }
+            }
+        }
+    }
+}
