@@ -21,6 +21,15 @@
                         "100.3.0"
                     ]
                 }
+            },
+            "magento/module-newsletter": {
+                "Fixed subscribe to newsletter if you already have an account": {
+                    "source": "patches/Magento_Newsletter/magento2-issue-8952.patch",
+                    "version": [
+                        "100.2.*",
+                        "100.3.0"
+                    ]
+                }
             }
         }
     }
