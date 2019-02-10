@@ -11,6 +11,10 @@
             "email": "piotr.kwiecinski@codemanufacture.com"
         }
     ],
+    "keywords": [
+        "magento 2",
+        "patch"
+    ],
     "extra": {
         "patches": {
             "magento/module-google-analytics": {

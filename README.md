@@ -1,4 +1,5 @@
-# magento2-patches
+# Magento 2 patches
+
 A collection of Magento 2 core patches related to specific PR's. Uses [vaimo/composer-patches](https://github.com/vaimo/composer-patches) to apply them to a project.
 
 ## Installation
