@@ -1,6 +1,6 @@
---- a/Controller/Subscriber/NewAction.php
-+++ b/Controller/Subscriber/NewAction.php
-@@ -77,9 +77,10 @@ public function __construct(
+--- a/Newsletter/Controller/Subscriber/NewAction.php
++++ b/Newsletter/Controller/Subscriber/NewAction.php
+@@ -61,9 +61,10 @@
      protected function validateEmailAvailable($email)
      {
          $websiteId = $this->_storeManager->getStore()->getWebsiteId();
@@ -10,6 +10,6 @@
              && !$this->customerAccountManagement->isEmailAvailable($email, $websiteId)
 -        ) {
 +        )) {
-             throw new LocalizedException(
+             throw new \Magento\Framework\Exception\LocalizedException(
                  __('This email address is already assigned to another user.')
              );
