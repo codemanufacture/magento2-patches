@@ -34,7 +34,15 @@
                         "100.3.0"
                     ]
                 }
-            }
+            },
+	    "magento-module-catalog": {
+                "Fix MySQL syntax error on indexation with certain attribute codes": {
+		    "source": "patches/Magento_Catalog/magento2-pr-22559.patch",
+		    "version": [
+		      ">=100.2.0 <100.2.9"
+		    ]
+		}
+	    }
         }
     }
 }
