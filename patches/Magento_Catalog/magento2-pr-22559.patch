@@ -1,17 +1,5 @@
 --- a/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
 +++ b/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
-@@ -365,7 +365,7 @@ protected function _updateTemporaryTableByStoreValues(
-                         []
-                     )->columns(
-                         [$columnName => $this->_connection->getIfNullSql('ts.value', 't0.value')]
--                    )->where($attributeCode . ' IS NOT NULL');
-+                    )->where($columnName . ' IS NOT NULL');
-                     if (!empty($changedIds)) {
-                         $select->where($this->_connection->quoteInto('et.entity_id IN (?)', $changedIds));
-                     }
-
---- a/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
-+++ b/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
 @@ -11,6 +11,7 @@
 
  /**
@@ -20,7 +8,26 @@
   * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
   */
  class FlatTableBuilder
-@@ -389,7 +390,7 @@ protected function _getTemporaryTableName($tableName)
+@@ -354,6 +355,7 @@ protected function _updateTemporaryTableByStoreValues(
+                 //Update not simple attributes (eg. dropdown)
+                 $columnName = $attributeCode . $valueFieldSuffix;
+                 if (isset($flatColumns[$columnName])) {
++                    $columnValue = $this->_connection->getIfNullSql('ts.value', 't0.value');
+                     $select = $this->_connection->select();
+                     $select->joinLeft(
+                         ['t0' => $this->_productIndexerHelper->getTable('eav_attribute_option_value')],
+@@ -364,8 +366,8 @@ protected function _updateTemporaryTableByStoreValues(
+                         'ts.option_id = et.' . $attributeCode . ' AND ts.store_id = ' . $storeId,
+                         []
+                     )->columns(
+-                        [$columnName => $this->_connection->getIfNullSql('ts.value', 't0.value')]
+-                    )->where($attributeCode . ' IS NOT NULL');
++                        [$columnName => $columnValue]
++                    )->where($columnValue . ' IS NOT NULL');
+                     if (!empty($changedIds)) {
+                         $select->where($this->_connection->quoteInto('et.entity_id IN (?)', $changedIds));
+                     }
+@@ -389,7 +391,7 @@ protected function _getTemporaryTableName($tableName)
      }
 
      /**
@@ -29,25 +36,3 @@
       *
       * @return \Magento\Framework\EntityManager\MetadataPool
       */
-
---- a/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
-+++ b/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
-@@ -355,6 +355,7 @@ protected function _updateTemporaryTableByStoreValues(
-                 //Update not simple attributes (eg. dropdown)
-                 $columnName = $attributeCode . $valueFieldSuffix;
-                 if (isset($flatColumns[$columnName])) {
-+                    $columnValue = $this->_connection->getIfNullSql('ts.value', 't0.value');
-                     $select = $this->_connection->select();
-                     $select->joinLeft(
-                         ['t0' => $this->_productIndexerHelper->getTable('eav_attribute_option_value')],
-@@ -365,8 +366,8 @@ protected function _updateTemporaryTableByStoreValues(
-                         'ts.option_id = et.' . $attributeCode . ' AND ts.store_id = ' . $storeId,
-                         []
-                     )->columns(
--                        [$columnName => $this->_connection->getIfNullSql('ts.value', 't0.value')]
--                    )->where($columnName . ' IS NOT NULL');
-+                        [$columnName => $columnValue]
-+                    )->where($columnValue . ' IS NOT NULL');
-                     if (!empty($changedIds)) {
-                         $select->where($this->_connection->quoteInto('et.entity_id IN (?)', $changedIds));
-                     }
