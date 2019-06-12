@@ -1,5 +1,5 @@
---- a/Magento/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
-+++ b/Magento/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
+--- a/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
++++ b/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
 @@ -365,7 +365,7 @@ protected function _updateTemporaryTableByStoreValues(
                          []
                      )->columns(
@@ -10,10 +10,10 @@
                          $select->where($this->_connection->quoteInto('et.entity_id IN (?)', $changedIds));
                      }
 
---- a/Magento/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
-+++ b/Magento/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
+--- a/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
++++ b/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
 @@ -11,6 +11,7 @@
- 
+
  /**
   * Class FlatTableBuilder
 + *
@@ -22,7 +22,7 @@
  class FlatTableBuilder
 @@ -389,7 +390,7 @@ protected function _getTemporaryTableName($tableName)
      }
- 
+
      /**
 -     * Get MetadataPool
 +     * Get metadata pool
@@ -30,8 +30,8 @@
       * @return \Magento\Framework\EntityManager\MetadataPool
       */
 
---- a/Magento/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
-+++ b/Magento/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
+--- a/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
++++ b/Catalog/Model/Indexer/Product/Flat/FlatTableBuilder.php
 @@ -355,6 +355,7 @@ protected function _updateTemporaryTableByStoreValues(
                  //Update not simple attributes (eg. dropdown)
                  $columnName = $attributeCode . $valueFieldSuffix;
